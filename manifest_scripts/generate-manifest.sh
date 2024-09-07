@@ -45,14 +45,14 @@ if [ ! -d "${top_dir}/.repo" ]; then
     exit
 fi
 
-if [ ! -f build/make/core/version_defaults.mk ]; then
+if [ ! -f build/make/target/product/gsi_release.mk ]; then
     echo -e ${reset}""${reset}
     echo -e ${ltred}"ERROR: Missing build/make. Please run `repo sync build/make` first."${reset}
     echo -e ${reset}""${reset}
     exit
 fi
 
-sdkv=$(cat build/make/core/version_defaults.mk | grep "PLATFORM_SDK_VERSION :=" | grep -o "[[:digit:]]\+")
+sdkv=$(cat build/make/target/product/gsi_release.mk | grep "PRODUCT_SHIPPING_API_LEVEL :=" | grep -o "[[:digit:]]\+")
 manifests_url="${manifests_url}-${sdkv}"
 manifests_path="${manifests_path}-${sdkv}"
 
