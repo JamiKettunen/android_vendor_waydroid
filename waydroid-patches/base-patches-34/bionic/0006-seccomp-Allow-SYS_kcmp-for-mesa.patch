@@ -12,14 +12,13 @@ diff --git a/libc/SECCOMP_ALLOWLIST_COMMON.TXT b/libc/SECCOMP_ALLOWLIST_COMMON.T
 index 0366fdf0f..5d9cac6de 100644
 --- a/libc/SECCOMP_ALLOWLIST_COMMON.TXT
 +++ b/libc/SECCOMP_ALLOWLIST_COMMON.TXT
-@@ -78,3 +78,6 @@ int sched_rr_get_interval_time64(pid_t, timespec64*) lp32
- int userfaultfd(int) all
- # Since Linux 5.9, used by POSIX_SPAWN_CLOEXEC_DEFAULT
- int close_range(unsigned int, unsigned int, int) all
+@@ -82,3 +82,6 @@ int sched_rr_get_interval_time64(pid_t, timespec64*) lp32
+ # support seems potentially useful for Android (though the struct that
+ # changes size over time is obviously problematic).
+ pid_t clone3(clone_args*, size_t) all
 +
 +# mesa
 +int kcmp(pid_t pid1, pid_t pid2, int type, unsigned long idx1, unsigned long idx2) all
-\ No newline at end of file
 -- 
 2.40.1
 
