@@ -1,0 +1,6 @@
+cc_binary {
+    name: "waydroid-init",
+    srcs: ["*.c"],
+    cflags: ["-Wall", "-Werror"],
+    shared_libs: ["libbase", "libcutils", "liblog"],
+}
