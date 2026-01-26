@@ -32,9 +32,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/waydroid.prop:$(TARGET_COPY_OUT_VENDOR)/waydroid.prop
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.setupwizard.mode=DISABLED
-
 # PC mode
 PRODUCT_PACKAGES += \
     pc.xml
