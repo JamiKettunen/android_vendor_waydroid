@@ -1,7 +1,7 @@
-From 6eb857ec89da595e5a32877759e2ffe9d70f0fcd Mon Sep 17 00:00:00 2001
+From 49fdc74faf55023e80fdc96f6d5c5b4ff7660b9d Mon Sep 17 00:00:00 2001
 From: TheKit <nekit1000@gmail.com>
 Date: Sun, 4 Apr 2021 00:52:56 +0300
-Subject: [PATCH] Never set FLAT_BINDER_FLAG_TXN_SECURITY_CTX flag
+Subject: [PATCH 1/2] Never set FLAT_BINDER_FLAG_TXN_SECURITY_CTX flag
 
 It breaks binder transactions when run on a kernel without
 SELinux support.
@@ -46,5 +46,5 @@ index d6dfa16..d7f7be0 100644
  
      status_t result = ioctl(mDriverFD, BINDER_SET_CONTEXT_MGR_EXT, &obj);
 -- 
-2.52.0
+2.51.0
 
