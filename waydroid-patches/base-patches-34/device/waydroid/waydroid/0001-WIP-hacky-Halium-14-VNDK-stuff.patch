@@ -1,0 +1,40 @@
+From 382fb60e2302f303062f22ffedda509b52fa119b Mon Sep 17 00:00:00 2001
+From: Jami Kettunen <jami.kettunen@protonmail.com>
+Date: Mon, 9 Feb 2026 16:13:50 +0200
+Subject: [PATCH] WIP hacky Halium 14 VNDK stuff
+
+---
+ BoardConfig.mk | 3 +--
+ device.mk      | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/BoardConfig.mk b/BoardConfig.mk
+index 3b93f85..1602b8f 100644
+--- a/BoardConfig.mk
++++ b/BoardConfig.mk
+@@ -18,8 +18,7 @@ BOARD_VENDOR := waydroid
+ 
+ DEVICE_PATH := device/waydroid/waydroid
+ 
+-# APEX
+-TARGET_FLATTEN_APEX := true
++BOARD_VNDK_VERSION := current
+ 
+ # Platform
+ TARGET_BOARD_PLATFORM := waydroid
+diff --git a/device.mk b/device.mk
+index 28e6dd8..f50bfe5 100644
+--- a/device.mk
++++ b/device.mk
+@@ -317,7 +317,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.nativebridge=1
+ endif
+ 
+ ifeq ($(filter %_waydroid_x86 %_waydroid_x86_64 %_waydroid_tv%,$(TARGET_PRODUCT)),)
+-PRODUCT_EXTRA_VNDK_VERSIONS := 29 30
++PRODUCT_EXTRA_VNDK_VERSIONS := 34
+ endif
+ 
+ # Updater
+-- 
+2.52.0
+
