@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: SupeChicken666 <me@supechicken666.dev>
+Date: Sat, 24 Jan 2026 16:15:57 +0800
+Subject: [PATCH] init: Allow overriding ro.hardware.gralloc
+
+Signed-off-by: SupeChicken666 <me@supechicken666.dev>
+---
+ init/property_service.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/init/property_service.cpp b/init/property_service.cpp
+index 72d499ab..e7567eec 100644
+--- a/init/property_service.cpp
++++ b/init/property_service.cpp
+@@ -415,7 +415,7 @@ static std::optional<uint32_t> PropertySet(const std::string& name, const std::s
+         prop_info* pi = (prop_info*)__system_property_find(name.c_str());
+         if (pi != nullptr) {
+             // ro.* properties are actually "write-once".
+-            if (StartsWith(name, "ro.")) {
++            if (StartsWith(name, "ro.") && name != "ro.hardware.gralloc") {
+                 *error = "Read-only property was already set";
+                 return {PROP_ERROR_READ_ONLY_PROPERTY};
+             }
+@@ -1215,7 +1215,7 @@ void PropertyLoadBootDefaults() {
+     load_properties_from_partition("odm", /* support_legacy_path_until */ 28);
+     load_properties_from_partition("product", /* support_legacy_path_until */ 30);
+     load_properties_from_file("/vendor/waydroid.prop", nullptr, &properties);
+- 
++
+     if (int vendor; ParseInt(properties["ro.vendor.build.version.sdk"], &vendor) &&
+         vendor >= 33) {
+         if (properties["ro.hardware.egl"] == "swiftshader") {
